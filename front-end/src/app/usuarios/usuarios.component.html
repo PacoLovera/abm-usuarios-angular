@@ -1,0 +1,67 @@
+<div class="container">
+    <h2>Gestión de Usuarios</h2>
+  
+    <!-- Botón para agregar un usuario -->
+    <button class="btn btn-primary" (click)="abrirFormulario()">Agregar Usuario</button>
+  
+    <!-- Tabla de usuarios -->
+    <table class="table table-bordered mt-3">
+      <thead>
+        <tr>
+          <th>Nombre</th>
+          <th>Apellido</th>
+          <th>Nombre de Usuario</th>
+          <th>Estado</th>
+          <th>Acciones</th>
+        </tr>
+      </thead>
+      <tbody>
+        @for (usuario of usuarios; track usuario.id){
+            <tr>
+                <td>{{ usuario.nombre }}</td>
+                <td>{{ usuario.apellido }}</td>
+                <td>{{ usuario.nombreUsuario }}</td>
+                <td>{{ usuario.estado }}</td>
+                <td>
+                  <button class="btn btn-warning btn-sm" (click)="editarUsuario(usuario)">Editar</button>
+                  @if (usuario.estado == "ACTIVO"){
+                    <button
+                    class="btn btn-danger btn-sm"
+                    (click)="bloquearUsuario(usuario)"
+                    >
+                        Bloquear
+                    </button>
+                  }
+                  <button class="btn btn-secondary btn-sm" (click)="eliminarUsuario(usuario.id)">Eliminar</button>
+                </td>
+            </tr>
+
+        }
+        @if(usuarios.length===0){
+            <tr >
+                <td colspan="6" class="text-center">No hay usuarios disponibles.</td>
+            </tr>
+        }
+      </tbody>
+    </table>
+  </div>
+  
+  <!-- Modal para formulario (opcional) -->
+   @if (mostrarFormulario){
+    <div class="modal">
+        <div class="modal-content">
+          <h3>{{ usuarioSeleccionado ? 'Editar Usuario' : 'Agregar Usuario' }}</h3>
+          <app-usuarios-form [userId]="usuarioSeleccionado" (guardar)="guardarUsuario($event)" (cerrar)="cerrarFormulario()"></app-usuarios-form>
+        </div>
+    </div>
+   }
+    
+
+   @if (mostrarFormularioBloqueo){
+    <div class="modal">
+        <div class="modal-content">
+          <app-bloquear-usuario [userId]="usuarioSeleccionado" (guardar)="guardarUsuario($event)" (cerrar)="cerrarFormulario()"></app-bloquear-usuario>
+        </div>
+    </div>
+
+   }

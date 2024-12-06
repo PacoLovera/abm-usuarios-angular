@@ -1,0 +1,53 @@
+<form [formGroup]="usuarioForm" (ngSubmit)="guardar()">
+    <div>
+      <label for="nombre">Nombre:</label>
+      <input id="nombre" formControlName="nombre" type="text" />
+      @if  (usuarioForm.get('nombre')?.invalid && usuarioForm.get('nombre')?.touched){
+        <div>
+            El nombre es obligatorio y debe tener al menos 3 caracteres.
+        </div>
+      }
+    </div>
+  
+    <div>
+      <label for="apellido">Apellido:</label>
+      <input id="apellido" formControlName="apellido" type="text" />
+      @if (usuarioForm.get('apellido')?.invalid && usuarioForm.get('apellido')?.touched){
+        <div>
+            El apellido es obligatorio y debe tener al menos 3 caracteres.
+        </div>
+      }
+      
+    </div>
+  
+    <div>
+      <label for="nombreUsuario">Nombre de Usuario:</label>
+      <input id="nombreUsuario" formControlName="nombreUsuario" type="text" />
+      @if (usuarioForm.get('nombreUsuario')?.invalid && usuarioForm.get('nombreUsuario')?.touched){
+        <div>
+            El nombre de usuario es obligatorio y debe tener al menos 5 caracteres.
+        </div>
+      }
+    </div>
+  
+    <div>
+      <label for="password">Password:</label>
+      <input id="password" formControlName="password" type="password" />
+      @if (usuarioForm.get('password')?.invalid && usuarioForm.get('password')?.touched){
+        <div>
+            La contraseña es obligatoria y debe tener al menos 8 caracteres.
+        </div>
+      }
+    </div>
+  
+    <div>
+      <label for="estado">Estado:</label>
+      <select id="estado" formControlName="estado">
+        <option value="ACTIVO">Activo</option>
+        <option value="BLOQUEADO">Bloqueado</option>
+      </select>
+    </div>
+  
+    <button type="submit" [disabled]="usuarioForm.invalid">Guardar</button>
+  </form>
+  

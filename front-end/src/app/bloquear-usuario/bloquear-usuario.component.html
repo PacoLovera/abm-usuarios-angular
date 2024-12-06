@@ -1,0 +1,11 @@
+<form [formGroup]="bloqueoForm" (ngSubmit)="bloquear()">
+    <div>
+      <label for="motivo">Motivo de Bloqueo:</label>
+      <select id="motivo" formControlName="motivo">
+        <option value="DUPLICADO">Duplicado</option>
+        <option value="BAJA_ADMINISTRATIVA">Baja Administrativa</option>
+      </select>
+    </div>
+    <button type="submit" [disabled]="bloqueoForm.invalid">Bloquear Usuario</button>
+</form>
+  
