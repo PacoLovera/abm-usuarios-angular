@@ -31,11 +31,12 @@ export class UsuariosComponent implements OnInit {
 
   editarUsuario(usuario: any): void {
     this.mostrarFormulario = true;
-    this.usuarioSeleccionado = { ...usuario }; // Copia del usuario para editar
+    this.usuarioSeleccionado = usuario.id; // Copia del usuario para editar
   }
 
   bloquearUsuario(usuario: any): void {
     this.mostrarFormularioBloqueo = true;
+    this.usuarioSeleccionado = usuario.id
   }
 
   eliminarUsuario(id: number): void {
