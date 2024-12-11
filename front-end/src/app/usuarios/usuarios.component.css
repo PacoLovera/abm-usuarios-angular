@@ -1,0 +1,125 @@
+/* Estilo para el contenedor principal */
+.container {
+    margin-top: 20px;
+  }
+  
+  /* Título de la página */
+  h2 {
+    text-align: center;
+    margin-bottom: 30px;
+    font-family: 'Arial', sans-serif;
+  }
+  
+  /* Estilo de los botones */
+  .btn {
+    font-size: 14px;
+    padding: 8px 12px;
+  }
+  
+  .btn-primary {
+    background-color: #007bff;
+    border: none;
+  }
+  
+  .btn-warning {
+    background-color: #ffc107;
+    border: none;
+  }
+  
+  .btn-danger {
+    background-color: #dc3545;
+    border: none;
+  }
+  
+  .btn-secondary {
+    background-color: #6c757d;
+    border: none;
+  }
+  
+  /* Espaciado de los botones en la tabla */
+  button {
+    margin-right: 10px;
+  }
+  
+  /* Estilo de la tabla */
+  .table {
+    width: 100%;
+    border-collapse: collapse;
+  }
+  
+  .table-bordered {
+    border: 1px solid #ddd;
+  }
+  
+  th, td {
+    padding: 12px;
+    text-align: left;
+    font-family: 'Arial', sans-serif;
+    border-bottom: 1px solid #ddd;
+  }
+  
+  th {
+    background-color: #f8f9fa;
+  }
+  
+  td {
+    background-color: #fff;
+  }
+  
+  /* Estilo para la fila vacía */
+  .text-center {
+    text-align: center;
+  }
+  
+  /* Estilos del modal */
+  .modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1050;
+  }
+  
+  .modal-content {
+    background-color: white;
+    padding: 20px;
+    border-radius: 8px;
+    max-width: 500px;
+    width: 100%;
+  }
+  
+  .modal-content h3 {
+    text-align: center;
+    margin-bottom: 20px;
+  }
+  
+  /* Estilos de los inputs del formulario */
+  input, select, textarea {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 15px;
+    border-radius: 4px;
+    border: 1px solid #ccc;
+  }
+  
+  /* Cambio de color de estado ACTIVO en la tabla */
+  .estado-activo {
+    color: green;
+    font-weight: bold;
+  }
+  
+  .estado-bloqueado {
+    color: red;
+    font-weight: bold;
+  }
+  
+  /* Fondo del formulario cuando está visible */
+  .modal-content {
+    background-color: #f9f9f9;
+  }
+  

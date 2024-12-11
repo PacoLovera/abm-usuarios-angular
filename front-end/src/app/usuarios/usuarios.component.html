@@ -24,7 +24,7 @@
                 <td>{{ usuario.apellido }}</td>
                 <td>{{ usuario.nombreUsuario }}</td>
                 <td>{{usuario.fechaCreacion| date:"MMM dd yyyy, hh:mm a"}}</td>
-                <td>{{ usuario.estado }}</td>
+                <td [ngClass]="usuario.estado === 'ACTIVO' ? 'estado-activo' : 'estado-bloqueado'">{{ usuario.estado }}</td>
                 @if (usuario.estado == "ACTIVO"){
                   <td>-</td>
                 }@else {<td>{{usuario.motivoBloqueo| formateoMotivo}}</td>}
