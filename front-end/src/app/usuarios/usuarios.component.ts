@@ -3,10 +3,11 @@ import { Usuario, UsuarioService } from '../service/usuario.service';
 import { UsuariosFormComponent } from '../usuarios-form/usuarios-form.component';
 import { BloquearUsuarioComponent } from '../bloquear-usuario/bloquear-usuario.component';
 import { DatePipe} from '@angular/common';
+import { FormateoMotivoPipe } from '../formateo-motivo.pipe';
 
 @Component({
   selector: 'app-usuarios',
-  imports: [UsuariosFormComponent, BloquearUsuarioComponent, DatePipe],
+  imports: [UsuariosFormComponent, BloquearUsuarioComponent, DatePipe, FormateoMotivoPipe],
   templateUrl: './usuarios.component.html',
   styleUrl: './usuarios.component.css'
 })

@@ -27,7 +27,7 @@
                 <td>{{ usuario.estado }}</td>
                 @if (usuario.estado == "ACTIVO"){
                   <td>-</td>
-                }@else {<td>{{usuario.motivoBloqueo}}</td>}
+                }@else {<td>{{usuario.motivoBloqueo| formateoMotivo}}</td>}
                 <td>
                   <button class="btn btn-warning btn-sm" (click)="editarUsuario(usuario.id)">Editar</button>
                   @if (usuario.estado == "ACTIVO"){
