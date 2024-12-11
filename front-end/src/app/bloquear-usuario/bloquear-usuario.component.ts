@@ -27,7 +27,6 @@ export class BloquearUsuarioComponent {
     const { motivo } = this.bloqueoForm.value;
 
     this.usuarioService.bloquearUsuario(this.userId, motivo).subscribe((usuario) => {
-      alert('Usuario bloqueado con éxito');
       this.guardarEvent.emit(usuario);
     });
   }
