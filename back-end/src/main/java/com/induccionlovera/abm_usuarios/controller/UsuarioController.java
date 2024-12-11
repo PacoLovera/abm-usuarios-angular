@@ -13,6 +13,7 @@ import com.induccionlovera.abm_usuarios.service.UsuarioService;
 import jakarta.validation.Valid;
 
 import java.util.List;
+import java.util.Map;
 
 @RestController
 @CrossOrigin(origins = "http://localhost:4200") 
@@ -54,12 +55,21 @@ public class UsuarioController {
         Usuario usuarioBloqueado = usuarioService.bloquearUsuario(id, motivo);
         return ResponseEntity.ok(usuarioBloqueado);
     }
+    
+ // Desbloquear un usuario
+    @PatchMapping("/{id}/desbloquear")
+    public ResponseEntity<Usuario> desbloquearUsuario(
+            @PathVariable Long id) {
+        Usuario usuarioDesbloqueado = usuarioService.desbloquearUsuario(id);
+        return ResponseEntity.ok(usuarioDesbloqueado);
+    }
 
     // Eliminar usuario
     @DeleteMapping("/{id}")
-    public ResponseEntity<String> eliminarUsuario(@PathVariable Long id) {
+    public ResponseEntity<Map<String, String>> eliminarUsuario(@PathVariable Long id) {
         usuarioService.eliminarUsuario(id);
-        return ResponseEntity.ok("Usuario eliminado");
+        Map<String, String> respuesta = Map.of("mensaje", "El usuario fue eliminado");
+        return ResponseEntity.ok(respuesta);
     }
     
     @GetMapping("/{id}")

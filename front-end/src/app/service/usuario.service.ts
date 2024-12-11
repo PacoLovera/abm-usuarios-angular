@@ -37,8 +37,12 @@ export class UsuarioService {
     return this.http.patch<Usuario>(`${this.apiUrl}/${id}/bloquear?motivo=${motivo}`, {});
   }
 
-  eliminarUsuario(id: number): Observable<Usuario> {
-    return this.http.delete<Usuario>(`${this.apiUrl}/${id}`);
+  desbloquearUsuario(id: number): Observable<Usuario> {
+    return this.http.patch<Usuario>(`${this.apiUrl}/${id}/desbloquear`, {});
+  }
+
+  eliminarUsuario(id: number): Observable<String> {
+    return this.http.delete<String>(`${this.apiUrl}/${id}`);
   }
 
   obtenerUsuario(id: number): Observable<Usuario> {

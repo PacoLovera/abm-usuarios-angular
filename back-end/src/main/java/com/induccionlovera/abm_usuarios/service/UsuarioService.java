@@ -55,6 +55,18 @@ public class UsuarioService {
         return usuarioRepository.save(usuario);
     }
 	
+	public Usuario desbloquearUsuario(Long id) {
+        Usuario usuario = usuarioRepository.findById(id)
+                .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND, "Id de usuario inválido"));
+
+        if (usuario.getEstado() == EstadoUsuario.ACTIVO) {
+            throw new ResponseStatusException(HttpStatus.CONFLICT, "El usuario ya está activo");
+        }
+
+        usuario.setEstado(EstadoUsuario.ACTIVO);
+        return usuarioRepository.save(usuario);
+    }
+	
 	public void eliminarUsuario(Long id) {
         if (!usuarioRepository.existsById(id)) {
             throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Id de usuario inválido");

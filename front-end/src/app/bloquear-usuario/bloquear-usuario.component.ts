@@ -1,6 +1,6 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input, Output, EventEmitter} from '@angular/core';
 import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
-import { UsuarioService } from '../service/usuario.service';
+import { Usuario, UsuarioService } from '../service/usuario.service';
 
 @Component({
   selector: 'app-bloquear-usuario',
@@ -10,6 +10,7 @@ import { UsuarioService } from '../service/usuario.service';
 })
 export class BloquearUsuarioComponent {
   @Input() userId!: number;
+  @Output() guardarEvent = new EventEmitter<Usuario>();
   bloqueoForm!: FormGroup;
 
   constructor(private fb: FormBuilder, private usuarioService: UsuarioService) {
@@ -25,8 +26,9 @@ export class BloquearUsuarioComponent {
 
     const { motivo } = this.bloqueoForm.value;
 
-    this.usuarioService.bloquearUsuario(this.userId, motivo).subscribe(() => {
+    this.usuarioService.bloquearUsuario(this.userId, motivo).subscribe((usuario) => {
       alert('Usuario bloqueado con éxito');
+      this.guardarEvent.emit(usuario);
     });
   }
 }

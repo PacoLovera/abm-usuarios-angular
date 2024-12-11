@@ -29,14 +29,21 @@ export class UsuariosComponent implements OnInit {
     this.usuarioSeleccionado = null;
   }
 
-  editarUsuario(usuario: any): void {
+  editarUsuario(usuarioId: number): void {
     this.mostrarFormulario = true;
-    this.usuarioSeleccionado = usuario.id; // Copia del usuario para editar
+    this.usuarioSeleccionado = usuarioId;
   }
 
-  bloquearUsuario(usuario: any): void {
+  bloquearUsuario(usuarioId: number): void {
     this.mostrarFormularioBloqueo = true;
-    this.usuarioSeleccionado = usuario.id
+    this.usuarioSeleccionado = usuarioId;
+  }
+
+  desbloquearUsuario(usuarioId: number){
+    this.usuarioService.desbloquearUsuario(usuarioId).subscribe((usuario) =>{
+      const index = this.usuarios.findIndex((u) => u.id === usuario.id);
+      this.usuarios[index] = usuario;
+    })
   }
 
   eliminarUsuario(id: number): void {
@@ -45,15 +52,13 @@ export class UsuariosComponent implements OnInit {
     });
   }
 
-  guardarUsuario(usuario: any): void {
+  guardarUsuario(usuario: Usuario): void {
     if (this.usuarioSeleccionado) {
       // Actualizar usuario existente
       const index = this.usuarios.findIndex((u) => u.id === usuario.id);
       this.usuarios[index] = usuario;
     } else {
       // Agregar nuevo usuario
-      usuario.id = this.usuarios.length + 1;
-      usuario.estado = 'ACTIVO';
       this.usuarios.push(usuario);
     }
     this.cerrarFormulario();
@@ -61,6 +66,7 @@ export class UsuariosComponent implements OnInit {
 
   cerrarFormulario(): void {
     this.mostrarFormulario = false;
+    this.mostrarFormularioBloqueo = false;
     this.usuarioSeleccionado = null;
   }
   

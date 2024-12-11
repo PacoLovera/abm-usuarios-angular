@@ -1,7 +1,6 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { UsuarioService, Usuario } from '../service/usuario.service';
-import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
   selector: 'app-usuarios-form',
@@ -13,12 +12,11 @@ export class UsuariosFormComponent implements OnInit {
   usuarioForm!: FormGroup;
   isEditMode = false;
   @Input() userId?: number;
+  @Output() guardarEvent = new EventEmitter<Usuario>();
 
   constructor(
     private fb: FormBuilder,
     private usuarioService: UsuarioService,
-    private route: ActivatedRoute,
-    private router: Router
   ) {}
 
   ngOnInit(): void {
@@ -28,7 +26,6 @@ export class UsuariosFormComponent implements OnInit {
       apellido: ['', [Validators.required, Validators.minLength(3)]],
       nombreUsuario: ['', [Validators.required, Validators.minLength(5)]],
       password: ['', [Validators.required, Validators.minLength(8)]],
-      estado: ['ACTIVO', Validators.required], // Valor por defecto
     });
     if(this.userId){
       this.isEditMode = true;
@@ -51,12 +48,12 @@ export class UsuariosFormComponent implements OnInit {
     const usuarioData: Partial<Usuario> = this.usuarioForm.value;
 
     if (this.isEditMode && this.userId) {
-      this.usuarioService.actualizarUsuario(this.userId, usuarioData).subscribe(() => {
-        this.router.navigate(['/']);
+      this.usuarioService.actualizarUsuario(this.userId, usuarioData).subscribe((usuario) => {
+        this.guardarEvent.emit(usuario)
       });
     } else {
-      this.usuarioService.crearUsuario(usuarioData).subscribe(() => {
-        this.router.navigate(['/']);
+      this.usuarioService.crearUsuario(usuarioData).subscribe((usuario) => {
+        this.guardarEvent.emit(usuario)
       });
     }
   }
