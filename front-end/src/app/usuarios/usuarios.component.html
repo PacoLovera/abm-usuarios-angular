@@ -11,6 +11,7 @@
           <th>Nombre</th>
           <th>Apellido</th>
           <th>Nombre de Usuario</th>
+          <th>Fecha y Hora</th>
           <th>Estado</th>
           <th>Motivo de Bloqueo</th>
           <th>Acciones</th>
@@ -22,6 +23,7 @@
                 <td>{{ usuario.nombre }}</td>
                 <td>{{ usuario.apellido }}</td>
                 <td>{{ usuario.nombreUsuario }}</td>
+                <td>{{usuario.fechaCreacion| date:"MMM dd yyyy, hh:mm a"}}</td>
                 <td>{{ usuario.estado }}</td>
                 @if (usuario.estado == "ACTIVO"){
                   <td>-</td>

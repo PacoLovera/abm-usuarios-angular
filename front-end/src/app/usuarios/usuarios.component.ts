@@ -2,10 +2,11 @@ import { Component, OnInit } from '@angular/core';
 import { Usuario, UsuarioService } from '../service/usuario.service';
 import { UsuariosFormComponent } from '../usuarios-form/usuarios-form.component';
 import { BloquearUsuarioComponent } from '../bloquear-usuario/bloquear-usuario.component';
+import { DatePipe} from '@angular/common';
 
 @Component({
   selector: 'app-usuarios',
-  imports: [UsuariosFormComponent, BloquearUsuarioComponent],
+  imports: [UsuariosFormComponent, BloquearUsuarioComponent, DatePipe],
   templateUrl: './usuarios.component.html',
   styleUrl: './usuarios.component.css'
 })
