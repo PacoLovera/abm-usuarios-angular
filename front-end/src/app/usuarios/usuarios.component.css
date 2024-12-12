@@ -25,6 +25,10 @@
     background-color: #ffc107;
     border: none;
   }
+  .btn-success{
+    background-color: green;
+    border: none;
+  }
   
   .btn-danger {
     background-color: #dc3545;

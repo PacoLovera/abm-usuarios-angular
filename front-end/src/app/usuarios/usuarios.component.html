@@ -31,11 +31,11 @@
                 <td>
                   <button class="btn btn-warning btn-sm" (click)="editarUsuario(usuario.id)">Editar</button>
                   @if (usuario.estado == "ACTIVO"){
-                    <button class="btn btn-danger btn-sm" (click)="bloquearUsuario(usuario.id)"> Bloquear</button>
+                    <button class="btn btn-secondary btn-sm" (click)="bloquearUsuario(usuario.id)"> Bloquear</button>
                   }@else {
-                    <button class="btn btn-danger btn-sm" (click)="desbloquearUsuario(usuario.id)">Desbloquear</button>
+                    <button class="btn btn-success btn-sm" (click)="desbloquearUsuario(usuario.id)">Desbloquear</button>
                   }
-                  <button class="btn btn-secondary btn-sm" (click)="eliminarUsuario(usuario.id)">Eliminar</button>
+                  <button class="btn btn-danger btn-sm" (click)="eliminarUsuario(usuario.id)">Eliminar</button>
                 </td>
             </tr>
 
